@@ -3,7 +3,7 @@ import { Bell } from "lucide-react";
 
 export default function Topbar({ title }) {
   return (
-    <header className="p-2 w-full">
+    <header className="p-2 w-full sticky left-0 top-0">
       <div className="bg-white shadow-gray-50 flex items-center justify-between px-4 py-3 rounded-xl">
         <div className="flex items-center gap-2">
           <h1 className="font-medium text-sm p-0.5">{title}</h1>

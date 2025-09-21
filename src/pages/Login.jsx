@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { LogIn } from "lucide-react";
 import { useNavigate } from "react-router";
+import { useAuthStore } from "@/store/auth";
 
 const API_SEND_OTP =
   "https://apis.allsoft.co/api/documentManagement/generateOTP";
@@ -41,6 +42,8 @@ export default function Login() {
     setLoading(false);
   };
 
+  const setToken = useAuthStore((state) => state.setToken);
+
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -54,6 +57,10 @@ export default function Login() {
       });
       const data = await res.json();
       if (data.status) {
+        // Save token in zustand after successful verification
+        if (data.data.token) {
+          setToken(data.data.token);
+        }
         setSuccess("Verified! Welcome " + data.data.user_name);
         setTimeout(() => {
           navigate("/admin-user", { replace: true });

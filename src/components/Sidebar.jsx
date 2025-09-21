@@ -3,7 +3,7 @@ import { NavLink } from "react-router";
 
 export default function Sidebar() {
   return (
-    <aside className="p-2 pr-0 h-screen">
+    <aside className="p-2 sticky left-0 top-0 pr-0 h-screen">
       <div className="w-64 bg-white shadow-gray-50 flex flex-col p-6 gap-8 rounded-xl h-full">
         <div className="mb-8 flex items-center gap-2">
           <span className="text-xl font-bold text-blue-700">DMS</span>
