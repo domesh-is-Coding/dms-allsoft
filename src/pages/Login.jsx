@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { LogIn } from "lucide-react";
 import { useNavigate } from "react-router";
 
 const API_SEND_OTP =
   "https://apis.allsoft.co/api/documentManagement/generateOTP";
 const API_VALIDATE_OTP =
-  "https://apis.allsoft.co/api/documentManagement//validateOTP";
+  "https://apis.allsoft.co/api/documentManagement/validateOTP";
 
 export default function Login() {
   const [step, setStep] = useState("input");
@@ -69,7 +70,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md flex flex-col gap-4">
         <div className="flex flex-col items-center mb-4">
-          <img src="/logo.svg" alt="FileHub" className="h-8 mb-2" />
+          <LogIn className="h-8 w-8 mb-2 text-green-400" />
           <h2 className="text-2xl font-bold text-center">
             Verify Your Phone Number
           </h2>
@@ -123,7 +124,12 @@ export default function Login() {
           </form>
         )}
         {error && (
-          <div className="text-red-500 text-center text-sm">{error}</div>
+          <div
+            className="text-red-500 text-center text-sm"
+            data-testid="login-error"
+          >
+            {error}
+          </div>
         )}
         {success && (
           <div className="text-green-600 text-center text-sm">{success}</div>
