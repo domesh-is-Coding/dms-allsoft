@@ -1,19 +1,52 @@
 import React from "react";
+import { NavLink } from "react-router";
 
 export default function Sidebar() {
   return (
-    <aside className="bg-white w-64 h-screen p-6 flex flex-col gap-6 shadow-lg rounded-r-xl fixed left-0 top-0 z-20">
-      <nav className="flex flex-col gap-4">
-        <a href="/admin-user" className="hover:text-blue-600 font-medium">
-          Admin User
-        </a>
-        <a href="/search-document" className="hover:text-blue-600 font-medium">
-          Search Document
-        </a>
-        <a href="/upload-document" className="hover:text-blue-600 font-medium">
-          Upload Document
-        </a>
-      </nav>
+    <aside className="p-2 pr-0 h-screen">
+      <div className="w-64 bg-white shadow-gray-50 flex flex-col p-6 gap-8 rounded-xl h-full">
+        <div className="mb-8 flex items-center gap-2">
+          <span className="text-xl font-bold text-blue-700">DMS</span>
+        </div>
+        <nav className="flex flex-col gap-2">
+          <NavLink
+            to="/admin-user"
+            className={({ isActive }) =>
+              `font-semibold text-sm rounded-md px-3 py-2 transition ${
+                isActive
+                  ? "bg-blue-600 text-white"
+                  : "text-gray-900 hover:bg-blue-100 hover:text-blue-600"
+              }`
+            }
+          >
+            Admin User
+          </NavLink>
+          <NavLink
+            to="/search-document"
+            className={({ isActive }) =>
+              `font-semibold text-sm rounded-md px-3 py-2 transition ${
+                isActive
+                  ? "bg-blue-600 text-white"
+                  : "text-gray-900 hover:bg-blue-100 hover:text-blue-600"
+              }`
+            }
+          >
+            Search Document
+          </NavLink>
+          <NavLink
+            to="/upload-document"
+            className={({ isActive }) =>
+              `font-semibold text-sm rounded-md px-3 py-2 transition ${
+                isActive
+                  ? "bg-blue-600 text-white"
+                  : "text-gray-900 hover:bg-blue-100 hover:text-blue-600"
+              }`
+            }
+          >
+            Upload Document
+          </NavLink>
+        </nav>
+      </div>
     </aside>
   );
 }

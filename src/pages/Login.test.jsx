@@ -23,6 +23,7 @@ describe("Login page", () => {
   beforeEach(() => {
     vi.resetAllMocks();
   });
+  // Tests for Login page. Make sure login works as expected.
   test("renders phone input and sends OTP", async () => {
     fetch.mockResolvedValueOnce({
       json: async () => ({ status: true, data: "OTP sent!" }),

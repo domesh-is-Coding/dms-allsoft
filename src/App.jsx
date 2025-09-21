@@ -1,51 +1,28 @@
-import { RouterProvider } from "react-router";
-import { createBrowserRouter, Navigate } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
+import Layout from "./layout/Layout";
 import Login from "./pages/Login";
 import AdminCreateUser from "./pages/AdminCreateUser";
-import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
-
-const router = createBrowserRouter([
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/admin-user",
-    element: <AdminCreateUser />,
-  },
-  {
-    path: "/search-document",
-    element: (
-      <div className="flex flex-col h-screen">
-        <Topbar />
-        <div className="flex flex-1">
-          <Sidebar />
-          <main className="flex-1 p-8">Search Document page.</main>
-        </div>
-      </div>
-    ),
-  },
-  {
-    path: "/upload-document",
-    element: (
-      <div className="flex flex-col h-screen">
-        <Topbar />
-        <div className="flex flex-1">
-          <Sidebar />
-          <main className="flex-1 p-8">Upload Document page.</main>
-        </div>
-      </div>
-    ),
-  },
-  {
-    path: "*",
-    element: <Navigate to="/login" replace />,
-  },
-]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route element={<Layout />}>
+          <Route path="/admin-user" element={<AdminCreateUser />} />
+          <Route
+            path="/search-document"
+            element={<div>Search Document page.</div>}
+          />
+          <Route
+            path="/upload-document"
+            element={<div>Upload Document page.</div>}
+          />
+        </Route>
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

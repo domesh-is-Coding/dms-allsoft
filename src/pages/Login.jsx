@@ -9,6 +9,7 @@ const API_VALIDATE_OTP =
 
 export default function Login() {
   const [step, setStep] = useState("input");
+  // Login page. Handles user authentication.
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
