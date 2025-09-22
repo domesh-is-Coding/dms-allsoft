@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Download, Eye } from "lucide-react";
-import { Select } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useAuthStore } from "@/store/auth";
+import { Select } from "../components/ui/select";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
+import { useAuthStore } from "../store/auth";
 import {
   Pagination,
   PaginationContent,
@@ -12,7 +12,7 @@ import {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
-} from "@/components/ui/pagination";
+} from "../components/ui/pagination";
 
 const initialFilters = {
   major_head: "",

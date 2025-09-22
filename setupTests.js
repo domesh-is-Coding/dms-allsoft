@@ -1,2 +1,3 @@
-// Setup jest-dom matchers for Vitest
+import { expect } from "vitest";
+globalThis.expect = expect;
 import "@testing-library/jest-dom/vitest";
