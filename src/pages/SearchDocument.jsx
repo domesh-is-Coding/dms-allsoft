@@ -51,11 +51,6 @@ export default function SearchDocument() {
   );
   const totalPages = Math.ceil(documents.length / pageSize);
 
-  // Search handler
-  const handleSearch = () => {
-    setPage(1);
-  };
-
   const fetchDocuments = async () => {
     setLoading(true);
     try {
@@ -246,12 +241,12 @@ export default function SearchDocument() {
                 paginatedDocuments.map((doc) => (
                   <tr
                     key={doc.document_id}
-                    className="border-b last:border-b-0 hover:bg-gray-50"
+                    className="border-b border-b-gray-200 last:border-b-0 hover:bg-gray-50"
                   >
-                    <td className="py-4 px-6 font-medium text-gray-900">
+                    <td className="py-4 px-6 font-medium text-sm text-gray-700">
                       {doc.major_head + " " + doc.minor_head}
                     </td>
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 text-sm text-gray-600">
                       {doc.file_url.endsWith(".pdf")
                         ? "PDF"
                         : doc.file_url.endsWith(".docx")
@@ -260,22 +255,26 @@ export default function SearchDocument() {
                         ? "PPTX"
                         : "File"}
                     </td>
-                    <td className="py-4 px-6">{doc.document_remarks}</td>
-                    <td className="py-4 px-6">{doc.uploaded_by}</td>
+                    <td className="py-4 px-6 text-sm text-gray-600">
+                      {doc.document_remarks}
+                    </td>
+                    <td className="py-4 px-6 text-sm text-gray-600">
+                      {doc.uploaded_by}
+                    </td>
                     <td className="py-4 px-6">
                       <div className="flex gap-6">
                         <a
                           href={doc.file_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1 text-blue-600 hover:underline text-base"
+                          className="flex items-center gap-1 text-blue-600 hover:underline text-sm"
                         >
                           <Eye size={18} /> Preview
                         </a>
                         <a
                           href={doc.file_url}
                           download
-                          className="flex items-center gap-1 text-blue-600 hover:underline text-base"
+                          className="flex items-center gap-1 text-blue-600 hover:underline text-sm"
                         >
                           <Download size={18} /> Download
                         </a>
@@ -289,7 +288,7 @@ export default function SearchDocument() {
         </div>
         {/* Pagination below table */}
         {documents.length > pageSize && (
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-3">
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
