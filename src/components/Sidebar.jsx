@@ -6,7 +6,9 @@ export default function Sidebar({ mobile = false, overlay = false, onClose }) {
   return (
     <aside
       className={
-        mobile
+        overlay
+          ? "block md:block p-2 sticky left-0 top-0 pr-0 h-screen"
+          : mobile
           ? "block md:hidden w-full bg-white p-2 mb-1"
           : "hidden md:block p-2 sticky left-0 top-0 pr-0 h-screen"
       }
