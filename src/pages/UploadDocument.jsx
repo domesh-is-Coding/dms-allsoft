@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useAuthStore } from "@/store/auth";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import { useAuthStore } from "../store/auth";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Button } from "../components/ui/button";
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "@/components/ui/select";
+} from "../components/ui/select";
 import {
   CalendarDays,
   Tag,
@@ -19,7 +19,7 @@ import {
   Folder,
   Plus,
 } from "lucide-react";
-import { DatePicker } from "@/components/ui/date-picker";
+import { DatePicker } from "../components/ui/date-picker";
 
 const CATEGORY_OPTIONS = [
   { label: "Personal", value: "Personal" },
