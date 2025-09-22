@@ -4,13 +4,28 @@ import Login from "./pages/Login";
 import AdminCreateUser from "./pages/AdminCreateUser";
 import SearchDocument from "./pages/SearchDocument";
 import UploadDocument from "./pages/UploadDocument";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route element={<Layout />}>
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           <Route path="/admin-user" element={<AdminCreateUser />} />
           <Route path="/search-document" element={<SearchDocument />} />
           <Route path="/upload-document" element={<UploadDocument />} />

@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { describe, it, expect, vi, afterEach } from "vitest";
+import { BrowserRouter } from "react-router";
 import Topbar from "../Topbar";
 import { useAuthStore } from "../../store/auth";
 
@@ -20,7 +21,11 @@ describe("Topbar", () => {
       onToggleMobileSidebar: vi.fn(),
       ...props,
     };
-    return render(<Topbar {...defaultProps} />);
+    return render(
+      <BrowserRouter>
+        <Topbar {...defaultProps} />
+      </BrowserRouter>
+    );
   };
 
   it("renders title on desktop", () => {
@@ -35,7 +40,9 @@ describe("Topbar", () => {
     renderTopbar({ onToggleMobileSidebar: mockToggle });
 
     // Hamburger menu should be present
-    const hamburgerButton = screen.getByRole("button", { name: /toggle sidebar/i });
+    const hamburgerButton = screen.getByRole("button", {
+      name: /toggle sidebar/i,
+    });
     expect(hamburgerButton).toBeInTheDocument();
 
     // DMS logo should be visible on mobile

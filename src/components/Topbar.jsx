@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Bell, Menu, LogOut } from "lucide-react";
+import { useNavigate } from "react-router";
 import { useAuthStore } from "../store/auth";
 
 export default function Topbar({ title, onToggleMobileSidebar }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const { setToken } = useAuthStore();
+  const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function Topbar({ title, onToggleMobileSidebar }) {
   const handleLogout = () => {
     setToken("");
     setShowProfileDropdown(false);
-    // You might want to redirect to login page here
+    navigate("/login", { replace: true });
   };
 
   return (
