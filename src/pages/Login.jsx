@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LogIn } from "lucide-react";
 import { useNavigate } from "react-router";
-import { useAuthStore } from "@/store/auth";
+import { useAuthStore } from "../store/auth";
 
 const API_SEND_OTP =
   "https://apis.allsoft.co/api/documentManagement/generateOTP";

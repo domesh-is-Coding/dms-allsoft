@@ -7,4 +7,158 @@ body {
     sans-serif;
   box-sizing: border-box;
 }
+
+/* Date input styling for smaller date picker modal */
+input[type="date"] {
+  /* Complete reset of browser defaults */
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+
+  /* Force consistent sizing */
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: 32px !important; /* For mobile */
+  min-height: 32px !important;
+
+  /* Remove all default padding and margins */
+  padding: 4px 8px !important;
+  margin: 0 !important;
+
+  /* Force single border */
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
+
+  /* Remove any background that might cause issues */
+  background: white !important;
+
+  /* Font settings */
+  font-size: 14px !important;
+  font-family: inherit !important;
+  line-height: normal !important;
+
+  /* Remove any text shadows or decorations */
+  text-shadow: none !important;
+  text-decoration: none !important;
+}
+
+/* Responsive height */
+@media (min-width: 640px) {
+  input[type="date"] {
+    height: 40px !important;
+    padding: 6px 8px !important;
+  }
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* Complete reset */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+
+  /* Size and positioning */
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Remove all backgrounds and borders */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  /* Positioning */
+  position: absolute !important;
+  right: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+
+  /* Cursor */
+  cursor: pointer !important;
+
+  /* Make sure it's visible */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  /* Complete reset */
+  -moz-appearance: none !important;
+  appearance: none !important;
+
+  /* Size and positioning */
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Remove all backgrounds and borders */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  /* Cursor */
+  cursor: pointer !important;
+
+  /* Make sure it's visible */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Focus states - remove any black borders */
+input[type="date"]:focus {
+  border-color: #3b82f6 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px #3b82f6 !important;
+  /* Remove any browser default focus rings */
+  -webkit-box-shadow: 0 0 0 1px #3b82f6 !important;
+  -moz-box-shadow: 0 0 0 1px #3b82f6 !important;
+}
+
+/* Active states */
+input[type="date"]:active {
+  border-color: #3b82f6 !important;
+  outline: none !important;
+}
+
+/* Hover states */
+input[type="date"]:hover {
+  border-color: #9ca3af !important;
+}
+
+/* Hide ALL browser UI elements that might cause issues */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-outer-spin-button,
+input[type="date"]::-webkit-clear-button,
+input[type="date"]::-webkit-search-cancel-button,
+input[type="date"]::-webkit-search-decoration,
+input[type="date"]::-webkit-search-results-button,
+input[type="date"]::-webkit-search-results-decoration {
+  display: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Firefox specific */
+input[type="date"]::-moz-focus-inner {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Additional aggressive overrides */
+input[type="date"] {
+  /* Force position relative for absolute positioning of indicator */
+  position: relative !important;
+}
+
+/* Hover effects for the indicator */
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="date"]::-moz-calendar-picker-indicator:hover {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  border-radius: 4px !important;
+}
+
 /* Global styles for the app. Tweak as needed. */
