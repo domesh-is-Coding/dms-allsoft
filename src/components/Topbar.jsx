@@ -5,7 +5,7 @@ import { useAuthStore } from "../store/auth";
 
 export default function Topbar({ title, onToggleMobileSidebar }) {
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-  const { setToken } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
@@ -23,7 +23,7 @@ export default function Topbar({ title, onToggleMobileSidebar }) {
   }, []);
 
   const handleLogout = () => {
-    setToken("");
+    logout();
     setShowProfileDropdown(false);
     navigate("/login", { replace: true });
   };
@@ -65,7 +65,7 @@ export default function Topbar({ title, onToggleMobileSidebar }) {
                 className="w-8 h-8 rounded-full object-cover"
               />
               <span className="hidden sm:inline font-medium text-sm text-gray-700">
-                John Smith
+                {user?.user_name || "User"}
               </span>
             </button>
             {/* Profile dropdown for all screen sizes */}
@@ -74,9 +74,11 @@ export default function Topbar({ title, onToggleMobileSidebar }) {
                 <div className="py-1">
                   <div className="px-4 py-2 border-b border-gray-200">
                     <p className="text-sm font-medium text-gray-900">
-                      John Smith
+                      {user?.user_name || "User"}
                     </p>
-                    <p className="text-xs text-gray-500">john@example.com</p>
+                    <p className="text-xs text-gray-500">
+                      {user?.user_id || ""}
+                    </p>
                   </div>
                   <button
                     onClick={handleLogout}

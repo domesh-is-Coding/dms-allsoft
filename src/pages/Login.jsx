@@ -42,7 +42,7 @@ export default function Login() {
     setLoading(false);
   };
 
-  const setToken = useAuthStore((state) => state.setToken);
+  const { setToken, setUser } = useAuthStore();
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
@@ -57,9 +57,12 @@ export default function Login() {
       });
       const data = await res.json();
       if (data.status) {
-        // Save token in zustand after successful verification
+        // Save token and user data in zustand after successful verification
         if (data.data.token) {
           setToken(data.data.token);
+        }
+        if (data.data) {
+          setUser(data.data);
         }
         setSuccess("Verified! Welcome " + data.data.user_name);
         setTimeout(() => {

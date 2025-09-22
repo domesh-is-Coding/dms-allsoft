@@ -8,7 +8,11 @@ import { useAuthStore } from "../../store/auth";
 // Mock the auth store
 vi.mock("../../store/auth", () => ({
   useAuthStore: vi.fn(() => ({
-    setToken: vi.fn(),
+    user: {
+      user_name: "Test User",
+      user_id: "test_user",
+    },
+    logout: vi.fn(),
   })),
 }));
 
@@ -72,58 +76,62 @@ describe("Topbar", () => {
     expect(avatar).toBeInTheDocument();
 
     // User name should be visible on larger screens
-    expect(screen.getByText("John Smith")).toBeInTheDocument();
+    expect(screen.getByText("Test User")).toBeInTheDocument();
   });
 
   it("toggles user profile dropdown", () => {
     renderTopbar();
 
     // Dropdown should not be visible initially
-    expect(screen.queryByText("john@example.com")).not.toBeInTheDocument();
+    expect(screen.queryByText("test_user")).not.toBeInTheDocument();
 
     // Click user profile button to open dropdown
-    const profileButton = screen.getByRole("button", { name: /john smith/i });
+    const profileButton = screen.getByRole("button", { name: /test user/i });
     fireEvent.click(profileButton);
 
     // Dropdown should now be visible
-    expect(screen.getByText("john@example.com")).toBeInTheDocument();
+    expect(screen.getByText("test_user")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
   });
 
   it("handles logout functionality", () => {
-    const mockSetToken = vi.fn();
+    const mockLogout = vi.fn();
     useAuthStore.mockReturnValue({
-      setToken: mockSetToken,
+      user: {
+        user_name: "Test User",
+        user_id: "test_user",
+      },
+      logout: mockLogout,
     });
 
     renderTopbar();
 
     // Open dropdown
-    const profileButton = screen.getByRole("button", { name: /john smith/i });
+    const profileButton = screen.getByRole("button", { name: /test user/i });
     fireEvent.click(profileButton);
 
     // Click logout button
     const logoutButton = screen.getByText("Logout");
     fireEvent.click(logoutButton);
 
-    // setToken should be called with empty string
-    expect(mockSetToken).toHaveBeenCalledWith("");
+    // logout should be called
+    expect(mockLogout).toHaveBeenCalled();
   });
 
   it("closes dropdown when clicking profile button again", () => {
     renderTopbar();
 
     // Open dropdown
-    const profileButton = screen.getByRole("button", { name: /john smith/i });
+    const profileButton = screen.getByRole("button", { name: /test user/i });
     fireEvent.click(profileButton);
 
     // Dropdown should be visible
-    expect(screen.getByText("john@example.com")).toBeInTheDocument();
+    expect(screen.getByText("test_user")).toBeInTheDocument();
 
     // Click profile button again to close
     fireEvent.click(profileButton);
 
     // Dropdown should be closed
-    expect(screen.queryByText("john@example.com")).not.toBeInTheDocument();
+    expect(screen.queryByText("test_user")).not.toBeInTheDocument();
   });
 });
