@@ -52,7 +52,9 @@ export default function SearchDocument() {
     try {
       console.log("Request body:", filters);
       const res = await fetch(
-        "https://apis.allsoft.co/api/documentManagement//searchDocumentEntry",
+        `${
+          import.meta.env.VITE_BACKEND_BASE_URL
+        }/documentManagement/searchDocumentEntry`,
         {
           method: "POST",
           headers: {

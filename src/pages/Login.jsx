@@ -3,10 +3,12 @@ import { LogIn } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useAuthStore } from "../store/auth";
 
-const API_SEND_OTP =
-  "https://apis.allsoft.co/api/documentManagement/generateOTP";
-const API_VALIDATE_OTP =
-  "https://apis.allsoft.co/api/documentManagement/validateOTP";
+const API_SEND_OTP = `${
+  import.meta.env.VITE_BACKEND_BASE_URL
+}/documentManagement/generateOTP`;
+const API_VALIDATE_OTP = `${
+  import.meta.env.VITE_BACKEND_BASE_URL
+}/documentManagement/validateOTP`;
 
 export default function Login() {
   const [step, setStep] = useState("input");

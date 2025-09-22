@@ -65,11 +65,16 @@ const UploadDocument = () => {
       setShowSuggestions(false);
       return;
     }
-    fetch("https://apis.allsoft.co/api/documentManagement/documentTags", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ term: tagInput }),
-    })
+    fetch(
+      `${
+        import.meta.env.VITE_BACKEND_BASE_URL
+      }/documentManagement/documentTags`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ term: tagInput }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data && Array.isArray(data.data)) {
@@ -151,7 +156,9 @@ const UploadDocument = () => {
 
     try {
       const res = await fetch(
-        "https://apis.allsoft.co/api/documentManagement/saveDocumentEntry",
+        `${
+          import.meta.env.VITE_BACKEND_BASE_URL
+        }documentManagement/saveDocumentEntry`,
         {
           method: "POST",
           headers: {
