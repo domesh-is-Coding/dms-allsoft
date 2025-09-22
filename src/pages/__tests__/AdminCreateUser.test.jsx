@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import AdminCreateUser from "./AdminCreateUser";
+import AdminCreateUser from "../AdminCreateUser";
 
 describe("AdminCreateUser", () => {
   it("renders the form with correct fields and disabled state", () => {

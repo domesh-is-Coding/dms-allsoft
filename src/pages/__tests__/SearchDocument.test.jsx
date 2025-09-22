@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import SearchDocument from "./SearchDocument";
-import * as authModule from "../store/auth";
+import SearchDocument from "../SearchDocument";
+import * as authModule from "../../store/auth";
 
 import {
   describe,
@@ -17,7 +17,7 @@ globalThis.expect = vitestExpect;
 import "@testing-library/jest-dom";
 
 // Mock useAuthStore
-vi.mock("../store/auth", () => ({
+vi.mock("../../store/auth", () => ({
   useAuthStore: vi.fn(),
 }));
 

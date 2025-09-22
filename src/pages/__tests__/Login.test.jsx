@@ -3,7 +3,7 @@ import React from "react";
 import { beforeAll, afterEach, describe, test, expect } from "vitest";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import Login from "./Login";
+import Login from "../Login";
 
 beforeAll(() => {
   window.fetch = vi.fn();
